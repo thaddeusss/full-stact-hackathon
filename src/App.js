@@ -1,9 +1,10 @@
 import Footer from "./components/Footer";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
   return (
     <div className="App">
-      <Footer />
+      <ProductDetailsPage />
     </div>
   );
 }
