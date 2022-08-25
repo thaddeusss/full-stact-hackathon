@@ -1,11 +1,14 @@
 .container {
   background-color: #6f73ee;
-  font-family: "Jost", sans-serif;
-  padding-top: 20px;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  width: 100%;
+  font-family: "Jost", sans-serif;
+  padding-top: 3vh;
+  margin-bottom: inherit !important;
+width: 100%;
+padding-bottom: 2vh;
 }
+
 
 .instBlock,
 .ytBlock,
@@ -89,8 +92,3 @@ p {
   }
 }
 
-@media (min-width: 1200px) {
-  .css-1oqqzyl-MuiContainer-root {
-    max-width: inherit !important;
-  }
-}
