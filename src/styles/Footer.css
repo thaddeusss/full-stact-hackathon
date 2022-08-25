@@ -1,0 +1,92 @@
+.container {
+  background-color: #6f73ee;
+}
+
+.main_footer {
+  background-color: #6f73ee;
+  height: 30vh;
+  font-family: "Jost", sans-serif;
+  padding-top: 20px;
+}
+
+.instBlock,
+.ytBlock,
+.telegBlock {
+  background-color: #fff;
+  padding: 10%;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 123px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 2vh;
+  margin-right: 1vw;
+}
+
+.instBlock,
+.ytBlock,
+.telegBlock,
+p {
+  color: black;
+}
+
+.footer_links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.foot_nav p {
+  margin-right: 2vw;
+}
+
+.foot_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.footer_up {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_down {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 5vh;
+  flex-wrap: wrap-reverse;
+}
+
+.footer_rights p {
+  font-size: 14px;
+  color: #fff;
+}
+
+.footer_comp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.footer_comp p {
+  margin-right: 2vw;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 490px) {
+  .footer_comp p::after {
+    content: "|";
+  }
+}
+
+@media only screen and (max-width: 913px) {
+  .footer_rights p {
+    margin-top: 2vh;
+  }
+}
