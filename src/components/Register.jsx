@@ -1,21 +1,25 @@
+
+
+
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+// import Avatar from "@mui/material/Avatar";
+// import Button from "@mui/material/Button";
+// import CssBaseline from "@mui/material/CssBaseline";
+// import TextField from "@mui/material/TextField";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
+// import Paper from "@mui/material/Paper";
+// import Box from "@mui/material/Box";
+// import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Link as RouterLink } from "react-router-dom";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContextProvider";
-import { Alert } from "@mui/material";
+import "../styles/Auth.css"
 
 function Copyright(props) {
   return (
@@ -35,89 +39,109 @@ function Copyright(props) {
   );
 }
 
-const theme = createTheme();
 
-export default function Register() {
-  const { register, error, setError } = useAuth();
 
-  const [email, setEmail] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState();
-  const [passwordConfirm, setPasswordConfirm] = React.useState("");
+export default function RegistrationPage() {
+    const { register, error, setError } = useAuth();
 
-  function handleSave() {
-    if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
-      alert("Заполните поля!");
-      return;
+    const [email, setEmail] = React.useState("");
+    const [username, setUsername] = React.useState("");
+    const [password, setPassword] = React.useState();
+    const [passwordConfirm, setPasswordConfirm] = React.useState("");
+  
+    function handleSave() {
+      if (!email.trim() || !password.trim() || !passwordConfirm.trim()) {
+        alert("Заполните поля!");
+        return;
+      }
+  
+      let formData = new FormData();
+      formData.append("email", email);
+      formData.append("username", username);
+      formData.append("password", password);
+      formData.append("password_confirm", passwordConfirm);
+      register(formData);
     }
+    const navigate = useNavigate()
+  
+  
+    console.log(email, password, passwordConfirm);
+    React.useEffect(() => {
+      setError(false);
+    }, []);
 
-    let formData = new FormData();
-    formData.append("email", email);
-    formData.append("username", username);
-    formData.append("password", password);
-    formData.append("password_confirm", passwordConfirm);
-    register(formData);
-  }
+  
+
+  const [changeColorProfile, setChangeColorProfile] = React.useState("#adadad")
+  const [changeColorUsername, setChangeColorUsername] = React.useState("#adadad")
+  const [changeColorConfirm, setChangeColorConfirm] = React.useState("#adadad")
+
+  const [changeColorLock, setChangeColorLock] = React.useState("#adadad")
 
 
-  console.log(email, password, passwordConfirm);
-  React.useEffect(() => {
-    setError(false);
-  }, []);
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        {error ? <Alert severity="error">{error}</Alert> : null}
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography>
-          <Box
-            component="form"
-            // onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
-            <TextField
-              margin="normal"
-              required
-              fullWidth
+    <div className="auth-main">
+      <div className="auth-block">
+        <h3 className="auth-header" >
+          Sign Up
+        </h3>
+        <div className="auth__input-block">
+          <p>
+            Email
+          </p>
+          <div className="auth-input__form">
+            <label htmlFor="email">
+              <PersonOutlineIcon id="usernameInp" className="auth-input__icon" sx={{color: changeColorProfile, transition: "all 100ms"}}/>
+            </label>
+            <input
+              placeholder="Adress Email"
+              className="auth-input"
+              type="text"
               id="email"
-              label="Email Address"
               name="email"
               autoComplete="email"
               autoFocus
-              onChange={(e) => setEmail(e.target.value)}
               value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              onFocus={() => setChangeColorProfile("#6F73EE")}
+              onBlur={() => setChangeColorProfile("#adadad")}
             />
-             <TextField
-              margin="normal"
-              required
-              fullWidth
+          </div>
+          <div className="auth__input-block">
+          <p>
+            Username
+          </p>
+          <div className="auth-input__form">
+            <label htmlFor="username">
+              <PersonOutlineIcon id="usernameInp" className="auth-input__icon" sx={{color: changeColorUsername, transition: "all 100ms"}}/>
+            </label>
+            <input
+              placeholder="Username"
+              className="auth-input"
+              type="text"
               id="username"
-              label="username"
               name="username"
               autoComplete="username"
               autoFocus
-              onChange={(e) => setUsername(e.target.value)}
               value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              onFocus={() => setChangeColorUsername("#6F73EE")}
+              onBlur={() => setChangeColorUsername("#adadad")}
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
+          </div>
+        </div>
+        </div>
+        <div className="auth__input-block">
+          <p>
+            Password
+          </p>
+          <div className="auth-input__form">
+            <label htmlFor="password">
+              <LockOutlinedIcon id="userpasswordInp" className="auth-input__icon" sx={{color: changeColorLock, transition: "all 100ms"}} />
+            </label>
+            <input
+              placeholder="Type password"
               name="password"
               label="Password"
               type="password"
@@ -125,51 +149,46 @@ export default function Register() {
               autoComplete="current-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onFocus={() => setChangeColorLock("#6F73EE")}
+              onBlur={() => setChangeColorLock("#adadad")}
             />
-
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Confirm Password"
-              type="password"
-              id="password-confirm"
+          </div>
+        </div>
+        <div className="auth__input-block">
+          <p>
+            Password
+          </p>
+          <div className="auth-input__form">
+            <label htmlFor="password">
+              <LockOutlinedIcon id="userpasswordInp" className="auth-input__icon" sx={{color: changeColorConfirm, transition: "all 100ms"}} />
+            </label>
+            <input
+              placeholder="Password confirm"
+              name="password_confirm"
+              label="Password"
+              type="password_confirm"
+              id="password_confirm"
               autoComplete="current-password"
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}
+              onFocus={() => setChangeColorConfirm("#6F73EE")}
+              onBlur={() => setChangeColorConfirm("#adadad")}
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              //   type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-              onClick={handleSave}
-            >
-              Register
-            </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                {/* <Link href="#" variant="body2"> */}
-                <RouterLink to="/login">
-                  <Typography>{"Don't have an account? Sign Up"}</Typography>
-                </RouterLink>
-                {/* </Link> */}
-              </Grid>
-            </Grid>
-          </Box>
-        </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
-      </Container>
-    </ThemeProvider>
+          </div>
+        </div>
+        {error ? <Typography sx={{ color: "red", m: 1 }}>{error}</Typography> : null}
+        <button
+          className="auth-btn"
+          // onClick={() => handleLogin(email, password)}
+          onClick={() => handleSave}
+        >Sign Up</button>
+        <div className="auth-another">
+          <p className="auth-another__hint">
+            Or Sign In
+          </p>
+          <button onClick={() => navigate("/login")} className="auth-link">SIGN IN</button>
+        </div>
+      </div>
+    </div>
   );
 }
