@@ -1,12 +1,10 @@
 .container {
   background-color: #6f73ee;
-}
-
-.main_footer {
-  background-color: #6f73ee;
-  height: 30vh;
   font-family: "Jost", sans-serif;
   padding-top: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .instBlock,
@@ -88,5 +86,11 @@ p {
 @media only screen and (max-width: 913px) {
   .footer_rights p {
     margin-top: 2vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .css-1oqqzyl-MuiContainer-root {
+    max-width: inherit !important;
   }
 }
