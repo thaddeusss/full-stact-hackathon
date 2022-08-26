@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  createTheme,
   FormControl,
   Input,
   InputLabel,
@@ -11,15 +12,16 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useProducts } from "../../contexts/ProductContextPovider";
+import "../../styles/AddProduct.css";
 
 const AddProduct = () => {
   const { getCategories, categories, addProducts } = useProducts();
 
   const [product, setProduct] = useState({
     title: "",
-    description: "",
-    price: "",
-    category: "",
+    desc: "",
+    categories: [1],
+    owner: "",
     image: "",
   });
 
@@ -46,9 +48,9 @@ const AddProduct = () => {
   function handleSave() {
     let newProduct = new FormData();
     newProduct.append("title", product.title);
-    newProduct.append("description", product.description);
-    newProduct.append("price", product.price);
-    newProduct.append("category", product.category);
+    newProduct.append("desc", product.desc);
+    newProduct.append("owner", product.owner);
+    newProduct.append("categories", product.categories);
     newProduct.append("image", product.image);
     addProducts(newProduct);
   }
@@ -68,7 +70,8 @@ const AddProduct = () => {
         Add new product
       </Typography>
       <TextField
-        sx={{ m: 1 }}
+        className="inp"
+        sx={{ outlineColor: "main" }}
         id="standard-basic"
         label="Title"
         variant="outlined"
@@ -78,26 +81,29 @@ const AddProduct = () => {
         value={product.title}
       />
       <TextField
+        className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
         label="Description"
         variant="outlined"
         fullWidth
-        name="description"
+        name="desc"
         onChange={handleInp}
-        value={product.description}
+        value={product.desc}
       />
       <TextField
+        className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
-        label="Price"
+        label="owner"
         variant="outlined"
         fullWidth
-        name="price"
+        name="owner"
         onChange={handleInp}
-        value={product.price}
+        value={product.owner}
       />
       <TextField
+        className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
         label="Category"
@@ -106,40 +112,10 @@ const AddProduct = () => {
         name="category"
       />
 
-      {/* <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Age</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          label="сфеупщкн"
-          onChange={handleInp}
-          value={product.category}
-          name="category"
-        >
-          {categories?.map((item) => (
-            <MenuItem value={item.id} key={item.id}>
-              {item.title}
-            </MenuItem>
-          ))} */}
-
-          {/* <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem> */}
-        {/* </Select>
-      </FormControl> */}
-      {/* <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Image"
-        variant="outlined"
-        fullWidth
-        name="image"
-      /> */}
-
       <input
         type="file"
-        // hidden
         name="image"
+        className="inp-img"
         onChange={handleInp}
       />
 
@@ -147,7 +123,7 @@ const AddProduct = () => {
         sx={{
           m: 1,
         }}
-        variant="secondary"
+        variant="outlined"
         fullWidth
         size="large"
         onClick={handleSave}
