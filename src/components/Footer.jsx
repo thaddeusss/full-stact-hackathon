@@ -1,4 +1,4 @@
-import { Grid, Link } from "@mui/material";
+import { Link } from "@mui/material";
 import { Container, Box } from "@mui/system";
 import React from "react";
 import "../styles/Footer.css";
@@ -24,7 +24,7 @@ const theme = createTheme({
 const Footer = () => {
   return (
     <div className="main_footer">
-      <Container maxWidth="lg" className="container">
+      <Container maxWidth="xl" className="container">
         <Box className="footer_up">
           <Box className="footer_links">
             <Link href="#" underline="none">
