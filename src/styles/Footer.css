@@ -1,11 +1,19 @@
 .container {
   background-color: #6f73ee;
+  /* position: absolute; */
+  bottom: 0;
   font-family: "Jost", sans-serif;
   padding-top: 3vh;
   padding-bottom: 2vh;
   position: relative;
   bottom: 0;
   margin-bottom: 0;
+}
+.main_footer{
+  position: relative;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .instBlock,

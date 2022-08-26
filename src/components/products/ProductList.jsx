@@ -12,10 +12,9 @@ const ProductList = () => {
   const [page, setPage] = useState(1);
   const itemsPerPage = 3;
   const count = Math.ceil(products.length / itemsPerPage);
-
-  useEffect(() => {
-    getProducts();
-  }, []);
+  // useEffect(() => {
+  //   getProducts()
+  // },[])
 
   useEffect(() => {
     getProducts();

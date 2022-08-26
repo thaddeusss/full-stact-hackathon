@@ -1,0 +1,24 @@
+.search_img{
+    background-color: #6F73EE;
+    padding: 7px;
+    cursor: pointer;
+}
+.search_box{
+display: flex;
+justify-content: center;
+background-color: transparent;
+outline-color:#6F73EE ;
+
+}
+.input_search{
+    outline: inherit !important;
+    border: 1px solid #EAEBED;
+    width: 35vw;
+    height:2.7vw;
+    padding: 1vw;
+    
+ 
+}
+.input_search:focus{
+    outline-color:#6F73EE !important;
+}
