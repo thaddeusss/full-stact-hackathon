@@ -3,10 +3,10 @@
   font-family: "Jost", sans-serif;
   padding-top: 3vh;
   padding-bottom: 2vh;
-  position: absolute;
+  position: relative;
   bottom: 0;
+  margin-bottom: 0;
 }
-
 
 .instBlock,
 .ytBlock,
@@ -89,4 +89,3 @@ p {
     margin-top: 2vh;
   }
 }
-
