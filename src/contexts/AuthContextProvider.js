@@ -22,7 +22,7 @@ const AuthContextProvider = ({ children }) => {
       console.log(Object.values(error.response.data).flat(2)[0]);
       console.log(error);
       setError(Object.values(error.response.data).flat(2)[0]);
-        // setError(Object.values(err.response.data).flat(2));
+      // setError(Object.values(err.response.data).flat(2));
     }
   };
 
@@ -79,7 +79,7 @@ const AuthContextProvider = ({ children }) => {
   }
   return (
     <authContext.Provider
-      value={{ register, login, checkAuth, logout, error, setError, user} }
+      value={{ register, login, checkAuth, logout, error, setError, user }}
     >
       {children}
     </authContext.Provider>

@@ -29,7 +29,7 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-const API = "https://cathelmet.herokuapp.com/";
+const API = "https://cathelmet.herokuapp.com";
 
 const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -46,7 +46,7 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       const res = await axios(
-        `${API}/product/`,
+        `${API}/changing/product/${window.location.search}`,
         config
       );
       console.log(res);
@@ -69,7 +69,7 @@ const ProductContextProvider = ({ children }) => {
         },
       };
 
-      const res = await axios(`${API}/category/list/`, config);
+      const res = await axios(`${API}/changing/categories/`, config);
       console.log(res);
       dispatch({
         type: "GET_CATEGORIES",
@@ -89,7 +89,11 @@ const ProductContextProvider = ({ children }) => {
           Authorization,
         },
       };
-      const res = await axios.post(`${API}/products/`, newProduct, config);
+      const res = await axios.post(
+        `${API}/changing/product/`,
+        newProduct,
+        config
+      );
       console.log(res);
       navigate("/products");
     } catch (error) {
@@ -107,7 +111,7 @@ const ProductContextProvider = ({ children }) => {
         },
       };
 
-      await axios.delete(`${API}/products/${id}/`, config);
+      await axios.delete(`${API}/changing/product/${id}/`, config);
       getProducts();
     } catch (error) {
       console.log(error);
@@ -130,6 +134,7 @@ dispatch({
         getProducts,
         getCategories,
         deleteProduct,
+        search,
         products: state.products,
         pages: state.pages,
         categories: state.categories,
