@@ -1,50 +1,69 @@
-import { Pagination } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useProducts } from "../../contexts/ProductContextPovider";
 import ProductCard from "./ProductCard";
-
+import { useProducts } from "../../contexts/ProductContextPovider";
 const ProductList = () => {
-  const { getProducts, products, pages } = useProducts();
+  const { products, getProducts } = useProducts();
+
   const [searchParams, setSearchParams] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(1);
+  console.log(searchParams);
+
+  const [page, setPage] = useState(1);
+  const itemsPerPage = 3;
+  const count = Math.ceil(products.length / itemsPerPage);
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  // console.log(products);
-
   useEffect(() => {
     getProducts();
+    setPage(1);
   }, [searchParams]);
 
-  useEffect(() => {
-    setSearchParams({
-      page: currentPage,
-    });
-  }, [currentPage]);
+  const handlePage = (e, p) => {
+    console.log(p);
+    setPage(p);
+  };
+
+  function currentData() {
+    const begin = (page - 1) * itemsPerPage;
+    const end = begin + itemsPerPage;
+    return products.slice(begin, end);
+  }
 
   return (
-    <div>
-      <Box>
-        ProductList
-        {products.map((item) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
+    <Box
+      sx={{
+        display: "flex",
+        mt: 2,
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-around",
+          flexWrap: "wrap",
+        }}
+      >
+        {products ? (
+          currentData().map((item) => <ProductCard item={item} key={item.id} />)
+        ) : (
+          <h3>Loading...</h3>
+        )}
       </Box>
 
-      <Box>
-        <Pagination
-          count={pages}
-          variant="outlined"
-          color="primary"
-          onChange={(e, page) => setCurrentPage(page)}
-          page={currentPage}
-        />
-      </Box>
-    </div>
+      <Pagination
+        variant="outlined"
+        shape="rounded"
+        sx={{ m: "0 auto" }}
+        count={count}
+        page={page}
+        onChange={handlePage}
+      />
+    </Box>
   );
 };
 

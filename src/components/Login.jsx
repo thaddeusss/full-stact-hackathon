@@ -1,6 +1,5 @@
-
 import React, { useState } from "react";
-import "../styles/Auth.css"
+import "../styles/Auth.css";
 // import Avatar from "@mui/material/Avatar";
 // import Button from "@mui/material/Button";
 // import CssBaseline from "@mui/material/CssBaseline";
@@ -13,8 +12,8 @@ import Link from "@mui/material/Link";
 // import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContextProvider";
@@ -37,44 +36,39 @@ function Copyright(props) {
   );
 }
 
-
-
-
 export default function Login() {
-      const navigate = useNavigate();
-    const { login, error, setError } = useAuth();
-    const [email, setEmail] = React.useState("");
-    const [password, setPassword] = React.useState("");
-  
-    function handleSave() {
-      let formData = new FormData();
-      formData.append("email", email);
-      formData.append("password", password);
-      login(formData, email);
-    }
-    React.useEffect(() => {
-      setError("");
-    }, []);
+  const navigate = useNavigate();
+  const { login, error, setError } = useAuth();
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
 
-  const [changeColorProfile, setChangeColorProfile] = useState("#adadad")
-  const [changeColorLock, setChangeColorLock] = useState("#adadad")
+  function handleSave() {
+    let formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+    login(formData, email);
+  }
+  React.useEffect(() => {
+    setError("");
+  }, []);
+
+  const [changeColorProfile, setChangeColorProfile] = useState("#adadad");
+  const [changeColorLock, setChangeColorLock] = useState("#adadad");
   // console.log(email, password);
-
- 
 
   return (
     <div className="auth-main">
       <div className="auth-block">
-        <h3 className="auth-header" >
-          Sign In
-        </h3>
+        <h3 className="auth-header">Sign In</h3>
         <div className="auth__input-block">
-          <p>
-            Username
-          </p>
+          <p>Username</p>
           <div className="auth-input__form">
             <label htmlFor="email">
-              <PersonOutlineIcon id="usernameInp"  sx={{color: changeColorProfile, transition: "all 100ms"}}  className="auth-input__icon" />
+              <PersonOutlineIcon
+                id="usernameInp"
+                sx={{ color: changeColorProfile, transition: "all 100ms" }}
+                className="auth-input__icon"
+              />
             </label>
             <input
               placeholder="Type your username"
@@ -92,12 +86,14 @@ export default function Login() {
           </div>
         </div>
         <div className="auth__input-block">
-          <p>
-            Password
-          </p>
+          <p>Password</p>
           <div className="auth-input__form">
             <label htmlFor="password">
-              <LockOutlinedIcon id="userpasswordInp" sx={{color: changeColorLock, transition: "all 100ms"}} className="auth-input__icon"/>
+              <LockOutlinedIcon
+                id="userpasswordInp"
+                sx={{ color: changeColorLock, transition: "all 100ms" }}
+                className="auth-input__icon"
+              />
             </label>
             <input
               placeholder="Type your password"
@@ -113,16 +109,17 @@ export default function Login() {
             />
           </div>
         </div>
-        {error ? <Typography sx={{ color: "red", m: 1 }}>{error}</Typography> : null}
-        <button
-          className="auth-btn"
-          onClick={() => handleSave}
-        >Sign In</button>
+        {error ? (
+          <Typography sx={{ color: "red", m: 1 }}>{error}</Typography>
+        ) : null}
+        <button className="auth-btn" onClick={handleSave}>
+          Sign In
+        </button>
         <div className="auth-another">
-          <p className="auth-another__hint">
-            Or Sign Up
-          </p>
-          <button onClick={() => navigate("/register")} className="auth-link">SIGN UP</button>
+          <p className="auth-another__hint">Or Sign Up</p>
+          <button onClick={() => navigate("/register")} className="auth-link">
+            SIGN UP
+          </button>
         </div>
       </div>
     </div>
