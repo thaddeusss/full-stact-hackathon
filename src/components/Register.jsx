@@ -163,7 +163,7 @@ export default function RegistrationPage() {
               <LockOutlinedIcon id="userpasswordInp" className="auth-input__icon" sx={{color: changeColorConfirm, transition: "all 100ms"}} />
             </label>
             <input
-              placeholder="Password confirm"
+              placeholder="Password "
               name="password_confirm"
               label="Password"
               type="password_confirm"
@@ -180,7 +180,7 @@ export default function RegistrationPage() {
         <button
           className="auth-btn"
           // onClick={() => handleLogin(email, password)}
-          onClick={() => handleSave}
+          onClick={handleSave}
         >Sign Up</button>
         <div className="auth-another">
           <p className="auth-another__hint">

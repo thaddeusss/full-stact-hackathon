@@ -1,49 +1,52 @@
-import { Pagination } from "@mui/material";
-import { Box } from "@mui/system";
+
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextPovider";
-import ProductCard from "./ProductCard";
+import search1 from "../../assets/icons/search.svg"
+import "../../styles/search.css"
+
+
+
 
 const ProductList = () => {
-  const { getProducts, products, pages } = useProducts();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [currentPage, setCurrentPage] = useState(1);
+  const { getProducts, fetchByParams, search } = useProducts();
+  const [stateSearch, setSearch] = useState('')
 
-  useEffect(() => {
-    getProducts();
-  }, []);
 
-  // console.log(products);
 
-  useEffect(() => {
-    getProducts();
-  }, [searchParams]);
+  // useEffect(()=>{
+  //   setSearch()
+  // }, [search])
 
-  useEffect(() => {
-    setSearchParams({
-      page: currentPage,
-    });
-  }, [currentPage]);
+
+  // const [searchParams, setSearchParams] = useSearchParams()
+
+  // const [search, setSearch] = useState(searchParams.get("q") || "")
+  
+  // useEffect(()=>{
+  //   setSearchParams({
+  //     q: search
+  //   })
+  // }, [search])
+
+  // useEffect(() => {
+  //   getProducts()
+  // },[searchParams])
+
+  // useEffect(() => {
+  //   getProducts()
+  // },[])
+
+
+
 
   return (
     <div>
-      <Box>
-        ProductList
-        {products.map((item) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
-      </Box>
-
-      <Box>
-        <Pagination
-          count={pages}
-          variant="outlined"
-          color="primary"
-          onChange={(e, page) => setCurrentPage(page)}
-          page={currentPage}
-        />
-      </Box>
+      <div className="search_box">
+<input type="text"  className="input_search" value={stateSearch}
+        onChange={(e) => setSearch(e.target.value)}/>
+<div className="search_img"><img src={search1} alt="" /></div>
+</div>
     </div>
   );
 };

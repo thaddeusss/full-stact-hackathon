@@ -29,7 +29,7 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-const API = "https://backend-for-fs-makers.herokuapp.com/api/v1";
+const API = "https://cathelmet.herokuapp.com/";
 
 const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -113,6 +113,15 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+ const search = async(value)=> {
+const {data}= await axios(`${API}changing/product/search/?q=${value}`)
+
+dispatch({
+  type: "GET_PRODUCTS",
+  payload: data
+})
+ }
+
 
   return (
     <productContext.Provider

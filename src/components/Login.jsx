@@ -117,6 +117,8 @@ export default function Login() {
         <button
           className="auth-btn"
           onClick={() => handleSave}
+          onClick={() => navigate("/")}
+
         >Sign In</button>
         <div className="auth-another">
           <p className="auth-another__hint">

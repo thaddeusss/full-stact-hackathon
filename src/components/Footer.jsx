@@ -73,6 +73,7 @@ const Footer = () => {
             <Link href="#" underline="none">
               <p>Правила использования системы</p>
             </Link>
+      
             <Link href="#" underline="none">
               <p>Информация о сайте</p>
             </Link>
