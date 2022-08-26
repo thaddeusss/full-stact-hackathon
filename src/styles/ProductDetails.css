@@ -1,0 +1,12 @@
+.pdc_img {
+  width: 20vw;
+  height: 70vh;
+  padding: 2vh;
+  border-radius: 20px;
+}
+
+.main_pdc {
+  display: flex;
+  justify-content: space-between;
+  width: 90vw;
+}

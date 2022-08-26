@@ -1,14 +1,12 @@
 .container {
   background-color: #6f73ee;
-  position: relative;
-  bottom: 0;
   font-family: "Jost", sans-serif;
   padding-top: 3vh;
-  margin-bottom: inherit !important;
-width: 100%;
-padding-bottom: 2vh;
+  padding-bottom: 2vh;
+  position: relative;
+  bottom: 0;
+  margin-bottom: 0;
 }
-
 
 .instBlock,
 .ytBlock,
@@ -91,4 +89,3 @@ p {
     margin-top: 2vh;
   }
 }
-

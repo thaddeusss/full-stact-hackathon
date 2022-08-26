@@ -1,3 +1,4 @@
+
 import { Grid } from "@mui/material";
 import { Container, Box } from "@mui/system";
 import React from "react";
@@ -8,7 +9,6 @@ import yt from "../assets/icons/018-youtube 1.svg";
 import teleg from "../assets/icons/003-telegram 2.svg";
 import donate from "../assets/icons/Webmoney.svg";
 import { Link } from "react-router-dom";
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -25,7 +25,7 @@ const theme = createTheme({
 const Footer = () => {
   return (
     <div className="main_footer">
-      <Container maxWidth="lg" className="container">
+      <Container maxWidth="xl" className="container">
         <Box className="footer_up">
           <Box className="footer_links">
             <Link to="/about" underline="none">
