@@ -74,7 +74,6 @@ const Footer = () => {
             <Link to="/about" underline="none">
               <p>Правила использования системы</p>
             </Link>
-
             <Link to="/about" underline="none">
               <p>Информация о сайте</p>
             </Link>

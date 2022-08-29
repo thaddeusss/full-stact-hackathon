@@ -11,7 +11,7 @@ const AboutUsPage = () => {
 
 
 
-  return <div className="container">
+  return <div className="content">
     <div className="h1"><h1>Предлагаем обмен разных вещей, по согласия клиентов</h1>
       <h5> И будем забоиться об удобстве клиента </h5></div>
     

@@ -109,7 +109,6 @@ export default function Login() {
             />
           </div>
         </div>
-
         {error ? (
           <Typography sx={{ color: "red", m: 1 }}>{error}</Typography>
         ) : null}
