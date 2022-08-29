@@ -29,7 +29,6 @@ function reducer(state = INIT_STATE, action) {
   }
 }
 
-
 const API = "https://cathelmet.herokuapp.com";
 
 const ProductContextProvider = ({ children }) => {
@@ -135,6 +134,7 @@ dispatch({
         getProducts,
         getCategories,
         deleteProduct,
+        search,
         products: state.products,
         pages: state.pages,
         categories: state.categories,

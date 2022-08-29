@@ -180,7 +180,10 @@ export default function RegistrationPage() {
           className="auth-btn"
           // onClick={() => handleLogin(email, password)}
           onClick={handleSave}
-        >Sign Up</button>
+
+        >
+          Sign Up
+        </button>
         <div className="auth-another">
           <p className="auth-another__hint">Or Sign In</p>
           <button onClick={() => navigate("/login")} className="auth-link">
