@@ -6,7 +6,7 @@
     
 }
 
-.content {
+.about {
     margin-top: 5%;
     margin-bottom:6% ;
 
@@ -17,6 +17,7 @@
     justify-content: space-between;
 padding: 5%;
 width: 100%;
+color: black;
 
   
 }
@@ -27,7 +28,7 @@ width: 100%;
   padding-right: 5%;
 width: 100%;
 }
-.block{
+.box{
     width: 25vw;
     border: 1px solid #EAEBED;
     border-radius: 10px;
@@ -50,7 +51,7 @@ width: 100%;
     padding-bottom: 4vh;
 
 }
-.block h3 {
+.box h3 {
     margin: 20px 0 10px;
 }
 .block1 h3 {

@@ -11,13 +11,13 @@ const AboutUsPage = () => {
 
 
 
-  return <div className="content">
+  return <div className="about">
     <div className="h1"><h1>Предлагаем обмен разных вещей, по согласия клиентов</h1>
       <h5> И будем забоиться об удобстве клиента </h5></div>
     
       <div className="content_block">
      
-        <div className="block">
+        <div className="box">
           <img src={cart} alt=""></img>
           <h3>Любые товары которых можно обменять</h3>
 
@@ -27,7 +27,7 @@ const AboutUsPage = () => {
 
         </div>
      
-      <div className="block">
+      <div className="box">
         <img src={cash} alt=""></img>
 
         <h3>Плюсы нашего сайта</h3>
@@ -36,7 +36,7 @@ const AboutUsPage = () => {
 
       </div>
 
-      <div className="block">
+      <div className="box">
         <img src={plus} alt=""></img>
 
         <h3>Безопасность и быстрота</h3>

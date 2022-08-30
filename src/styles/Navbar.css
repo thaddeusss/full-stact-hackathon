@@ -9,6 +9,7 @@
     display: flex;
     justify-content: space-between;
     list-style-type: none;
+    /* margin-left: 24vw !important; */
 }
 li{
     padding: 15px;
@@ -48,8 +49,8 @@ padding: 0.4vw;
 }
 .icons{
     display: flex;
-    justify-content: space-around;
-    width: 10vw;
+    justify-content: space-between;
+    width: 15vw;
 }
 .input_box{
     
@@ -64,15 +65,22 @@ padding: 0.4vw;
     justify-content: space-around;
     border-top:1px solid #ECF3FF;
     border-bottom:1px solid #ECF3FF;
+ 
 
+}.filter div{
+    transition: 0.5s;
 }
+
     .filter div:hover{
 background-color: #6F73EE;
-
+/* transition: 1s; */
     }
+    
     
     .filter div:hover .filter_icon{
         color: white;
+transition: 0.5s;
+
     }
     .filter div {
         width: calc(100%/6) !important;
@@ -114,5 +122,8 @@ height: 2vw;    }
 }
 .profile{
     color: white !important;
+}
+.filter div{
+    padding: inherit;
 }
 }

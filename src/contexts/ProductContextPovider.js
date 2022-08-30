@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 export const productContext = createContext();
 export const useProducts = () => useContext(productContext);
@@ -117,15 +117,25 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
- const search = async(value)=> {
-const {data}= await axios(`${API}changing/product/search/?q=${value}`)
+  const search = async (value) => {
+    const { data } = await axios(`${API}changing/product/search/${value}`)
+console.log(data)
+    dispatch({
+      type: "GET_PRODUCTS",
+      payload: data
+    })
+  }
+  const fetchByParams = (query, value) => {
+    const search = new URLSearchParams(window.location.search);
 
-dispatch({
-  type: "GET_PRODUCTS",
-  payload: data
-})
- }
-
+    if (value === "all") {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+    const url = `${window.location.pathname}?${search.toString()}`;
+    navigate(url);
+  };
 
   return (
     <productContext.Provider
@@ -135,6 +145,7 @@ dispatch({
         getCategories,
         deleteProduct,
         search,
+        fetchByParams,
         products: state.products,
         pages: state.pages,
         categories: state.categories,

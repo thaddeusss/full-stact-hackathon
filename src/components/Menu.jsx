@@ -44,10 +44,10 @@ const Menu = () => {
                             <TelegramIcon className="icon" style={{ color: "white" }} />
                         </div>
                         <div sx={{ m: 5 }} className="icons">
-        <FavoriteBorderIcon sx={{ color: "white" }} />
-        <img src={cart} alt="" sx={{ mb: "4px", width: '22px' }} className="cart" />
+                            <FavoriteBorderIcon sx={{ color: "white" }} />
+                            <img src={cart} alt="" sx={{ mb: "4px", width: '22px' }} className="cart" />
 
-                   </div> </ul>
+                        </div> </ul>
                 </div>
             </div>
 
