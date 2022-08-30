@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useProducts } from "../contexts/ProductContextPovider";
 import "../styles/ProductDetails.css";
 
 const ProductDetailsPage = () => {
+  const { id } = useParams();
+  const { getProductDetails, productDetails } = useProducts();
+
+  useEffect(() => {
+    getProductDetails(id);
+  }, []);
+  console.log(productDetails);
+
   return (
     <div>
       <div class="wrapper">
         <div class="card">
           <div class="product-left">
             <div class="header">
-              <h1>Продукт</h1>
-              <h4>категория</h4>
+              <h1>{productDetails.title}</h1>
+              <h4>{productDetails.category}</h4>
             </div>
             {/* <!--DESCRIPITON / DETAILS--> */}
             <div class="product-main">
@@ -17,12 +27,7 @@ const ProductDetailsPage = () => {
                 <span>Описание</span>
                 <span></span>
               </div>
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Ratione voluptatem quam vel, delectus expedita ullam asperiores
-                laudantium modi. Voluptatum eum cum quis ea modi. Reiciendis
-                asperiores aut beatae odit minima.
-              </p>
+              <p>{productDetails.desc}</p>
             </div>
             {/* <!-- ADD TO CART BUTTON --> */}
             <div class="product-btns">

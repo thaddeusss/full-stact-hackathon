@@ -1,6 +1,8 @@
+
 * {
   text-decoration: none;
 }
+
 .cards {
   display: flex;
   flex-direction: column;
