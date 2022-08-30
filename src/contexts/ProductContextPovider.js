@@ -118,6 +118,15 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+ const search = async(value)=> {
+const {data}= await axios(`${API}changing/product/search/?q=${value}`)
+
+dispatch({
+  type: "GET_PRODUCTS",
+  payload: data
+})
+ }
+
 
   async function saveEditProduct(id) {
     try {
@@ -144,6 +153,7 @@ const ProductContextProvider = ({ children }) => {
         getCategories,
         deleteProduct,
         saveEditProduct,
+        search,
         products: state.products,
         pages: state.pages,
         categories: state.categories,

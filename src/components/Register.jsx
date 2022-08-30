@@ -160,7 +160,7 @@ export default function RegistrationPage() {
               />
             </label>
             <input
-              placeholder="Password confirm"
+              placeholder="Password "
               name="password_confirm"
               label="Password"
               type="password_confirm"
@@ -180,6 +180,7 @@ export default function RegistrationPage() {
           className="auth-btn"
           // onClick={() => handleLogin(email, password)}
           onClick={handleSave}
+
         >
           Sign Up
         </button>
