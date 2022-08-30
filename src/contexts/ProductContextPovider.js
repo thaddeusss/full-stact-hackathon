@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
+import { ACTIONS } from "../helpers/consts";
 
 export const productContext = createContext();
 export const useProducts = () => useContext(productContext);
@@ -127,6 +128,23 @@ dispatch({
  }
 
 
+  async function saveEditProduct(id) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+
+      await axios.patch(`${API}/changing/product/${id}/`, config);
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <productContext.Provider
       value={{
@@ -134,6 +152,7 @@ dispatch({
         getProducts,
         getCategories,
         deleteProduct,
+        saveEditProduct,
         search,
         products: state.products,
         pages: state.pages,

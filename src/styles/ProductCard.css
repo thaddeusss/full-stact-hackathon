@@ -1,0 +1,20 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1.5px solid #eaebed !important;
+  border-radius: 10px !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.mui-btn {
+  color: #6f73ee !important;
+  border: 1.3px solid #eaebed !important;
+}
+
+.mui-btn-primary {
+  color: #ffffff !important;
+  border-radius: 5px !important;
+  background: #6f73ee !important;
+  width: 90%;
+}

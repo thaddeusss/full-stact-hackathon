@@ -36,7 +36,7 @@ const ProductList = () => {
     <Box
       sx={{
         display: "flex",
-        mt: 2,
+        mt: 5,
         flexDirection: "column",
       }}
     >
@@ -57,7 +57,7 @@ const ProductList = () => {
       <Pagination
         variant="outlined"
         shape="rounded"
-        sx={{ m: "0 auto" }}
+        sx={{ m: "0 auto", marginTop: "2%" }}
         count={count}
         page={page}
         onChange={handlePage}
