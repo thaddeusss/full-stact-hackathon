@@ -3,7 +3,7 @@ import ProductContextProvider from "./contexts/ProductContextPovider";
 import MainRoutes from "./MainRoutes";
 import Footer from "./components/Footer";
 import AuthContextProvider from "./contexts/AuthContextProvider";
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar";
 
 function App() {
   return (

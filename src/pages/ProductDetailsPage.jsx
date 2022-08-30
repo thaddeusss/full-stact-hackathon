@@ -1,51 +1,44 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Container,
-  Typography,
-} from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
 import "../styles/ProductDetails.css";
 
 const ProductDetailsPage = () => {
   return (
     <div>
-      <div className="main_pdc">
-        <Box>
-          <img
-            src="https://images.unsplash.com/photo-1566275529824-cca6d008f3da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGhvdG98ZW58MHx8MHx8&w=1000&q=80"
-            alt=""
-            className="pdc_img"
-          />
-        </Box>
-        <Card sx={{ minWidth: 275 }}>
-          <CardContent>
-            <Typography
-              sx={{ fontSize: 14 }}
-              color="text.secondary"
-              gutterBottom
-            >
-              Word of the Day
-            </Typography>
-            <Typography variant="h5" component="div">
-              jkdsbvjksdbdvjsnjfkl
-            </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              adjective
-            </Typography>
-            <Typography variant="body2">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Learn More</Button>
-          </CardActions>
-        </Card>
+      <div class="wrapper">
+        <div class="card">
+          <div class="product-left">
+            <div class="header">
+              <h1>Продукт</h1>
+              <h4>категория</h4>
+            </div>
+            {/* <!--DESCRIPITON / DETAILS--> */}
+            <div class="product-main">
+              <div class="focus">
+                <span>Описание</span>
+                <span></span>
+              </div>
+              <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                Ratione voluptatem quam vel, delectus expedita ullam asperiores
+                laudantium modi. Voluptatum eum cum quis ea modi. Reiciendis
+                asperiores aut beatae odit minima.
+              </p>
+            </div>
+            {/* <!-- ADD TO CART BUTTON --> */}
+            <div class="product-btns">
+              <a href="#" class="product-add">
+                Забрать
+              </a>
+            </div>
+          </div>
+          <div class="product-right">
+            <img
+              className="pd_img"
+              src="https://softech.kg/image/cache/d7f592a52318a514381813d58e6e140e.jpg"
+              alt=""
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

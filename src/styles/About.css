@@ -1,73 +1,75 @@
-
-
 .h1 {
-    text-align: center;
-    
-    
+  text-align: center;
 }
 
-.content {
-    margin-top: 5%;
-    margin-bottom:6% ;
-
+.about {
+  margin-top: 5%;
+  margin-bottom: 6%;
 }
 
-.content_block{
-    display: flex;
-    justify-content: space-between;
-padding: 5%;
-width: 100%;
-
-  
+.content_block {
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+  width: 100%;
+  color: black;
 }
-.content_block1{
-    display: flex;
-    justify-content: space-between;
+.content_block1 {
+  display: flex;
+  justify-content: space-between;
   padding-left: 5%;
   padding-right: 5%;
-width: 100%;
+  width: 100%;
 }
-.block{
-    width: 25vw;
-    border: 1px solid #EAEBED;
-    border-radius: 10px;
-    /* padding: 27vw, 41vw, 66vw, 20vw; */
-    padding-top: 4vh;
-    padding-left: 5vh;
-    padding-right: 2vw;
-    padding-bottom: 4vh;
-
+.box {
+  width: 25vw;
+  border: 1px solid #eaebed;
+  border-radius: 10px;
+  /* padding: 27vw, 41vw, 66vw, 20vw; */
+  padding-top: 4vh;
+  padding-left: 5vh;
+  padding-right: 2vw;
+  padding-bottom: 4vh;
 }
 
-.block1{
-    width: 25vw;
-    border:1px solid #EAEBED;
-    border-radius: 10px;
-    /* padding: 27vw, 41vw, 66vw, 20vw; */
-    padding-top: 4vh;
-    padding-left: 5vh;
-    padding-right: 2vw;
-    padding-bottom: 4vh;
-
+.block1 {
+  width: 25vw;
+  border: 1px solid #eaebed;
+  border-radius: 10px;
+  /* padding: 27vw, 41vw, 66vw, 20vw; */
+  padding-top: 4vh;
+  padding-left: 5vh;
+  padding-right: 2vw;
+  padding-bottom: 4vh;
 }
-.block h3 {
-    margin: 20px 0 10px;
+.box h3 {
+  margin: 20px 0 10px;
 }
 .block1 h3 {
-    margin: 20px 0 10px;
+  margin: 20px 0 10px;
 }
 
-.navigate{
-    display: flex;
-    text-align: start;
-    align-items: center;
-    justify-content: center;
-    background-color: #F4F7FB;
+.navigate {
+  display: flex;
+  text-align: start;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f7fb;
 }
 
-.btn_block{
-    border: none;
-    background-color: #F4F7FB;
-    color: #6F73EE;
-    cursor: pointer;
+.btn_block {
+  border: none;
+  background-color: #f4f7fb;
+  color: #6f73ee;
+  cursor: pointer;
+}
+.block {
+  width: 25vw;
+  border: 1px solid #eaebed;
+  border-radius: 10px;
+  /* padding: 27vw, 41vw, 66vw, 20vw; */
+  padding-top: 4vh;
+  padding-left: 5vh;
+  padding-right: 2vw;
+  padding-bottom: 4vh;
 }
