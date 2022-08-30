@@ -11,6 +11,7 @@ const INIT_STATE = {
   pages: 0,
   oneProduct: null,
   categories: [],
+  productDetails: {},
 };
 
 function reducer(state = INIT_STATE, action) {
@@ -25,6 +26,8 @@ function reducer(state = INIT_STATE, action) {
       return { ...state, categories: action.payload };
     case "GET_ONE_PRODUCT":
       return { ...state, oneProduct: action.payload };
+    case ACTIONS.GET_PRODUCT_DETAILS:
+      return { ...state, productDetails: action.payload };
     default:
       return state;
   }
@@ -118,15 +121,14 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
- const search = async(value)=> {
-const {data}= await axios(`${API}changing/product/search/?q=${value}`)
+  const search = async (value) => {
+    const { data } = await axios(`${API}changing/product/search/?q=${value}`);
 
-dispatch({
-  type: "GET_PRODUCTS",
-  payload: data
-})
- }
-
+    dispatch({
+      type: "GET_PRODUCTS",
+      payload: data,
+    });
+  };
 
   async function saveEditProduct(id) {
     try {
@@ -144,6 +146,13 @@ dispatch({
       console.log(error);
     }
   }
+  const getProductDetails = async (id) => {
+    const { data } = await axios.get(`${API}/changing/product/${id}/`);
+    dispatch({
+      type: ACTIONS.GET_PRODUCT_DETAILS,
+      payload: data,
+    });
+  };
 
   return (
     <productContext.Provider
@@ -154,9 +163,11 @@ dispatch({
         deleteProduct,
         saveEditProduct,
         search,
+        getProductDetails,
         products: state.products,
         pages: state.pages,
         categories: state.categories,
+        productDetails: state.productDetails,
       }}
     >
       {children}
