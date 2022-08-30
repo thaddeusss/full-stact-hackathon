@@ -6,6 +6,8 @@ import Register from "./components/Register";
 import AboutUsPage from "./pages/AboutUsPage";
 import AdminPage from "./pages/AdminPage";
 import ProductCardPage from "./pages/ProductCardPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [];
@@ -16,6 +18,9 @@ const MainRoutes = () => {
       <Route path="/About" element={<AboutUsPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/details" element={<ProductDetailsPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+
       {PUBLIC_ROUTES.map((item) => (
         <Route path={item.link} element={item.element} key={item.id} />
       ))}
