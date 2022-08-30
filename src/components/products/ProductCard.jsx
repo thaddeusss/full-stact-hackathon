@@ -5,35 +5,72 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+import { Box, IconButton, Rating, Stack } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import MoreIcon from "@mui/icons-material/More";
 import { useProducts } from "../../contexts/ProductContextPovider";
 
+import "../../styles/ProductCard.css";
+
 export default function ProductCard({ item }) {
-  const { deleteProduct } = useProducts();
+  const { deleteProduct, saveEditProduct } = useProducts();
+
+  const navigate = useNavigate();
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ width: 250 }} className="card">
       <CardMedia
         component="img"
-        height="140"
         image={item.image}
-        alt={item.title}
+        alt="img"
+        className="card_img"
+        sx={{ height: "50%" }}
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {item.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {item.description}
-        </Typography>
-        <Typography variant="caption" color="error">
-          {item.author}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            width: "90%",
+            height: "20px",
+            cursor: "pointer",
+          }}
+        >
+          {item.desc}
         </Typography>
       </CardContent>
+
+      <Stack spacing={1} className="rating_button">
+        <Box>
+          <IconButton className="mui-btn">
+            <ShoppingBasketIcon />
+          </IconButton>
+          <IconButton className="mui-btn">
+            <FavoriteBorderIcon />
+          </IconButton>
+        </Box>
+      </Stack>
+
       <CardActions>
-        <Button size="small" onClick={() => deleteProduct(item.id)}>
-          Delete
+        <Button onClick={() => deleteProduct(item.id)} className="mui-btn">
+          <DeleteOutlineIcon />
         </Button>
-        <Button size="small">Learn More</Button>
+
+        <Button onClick={() => saveEditProduct(item.id)} className="mui-btn">
+          <EditIcon />
+        </Button>
+
+        <Button className="mui-btn">
+          <MoreIcon />
+        </Button>
       </CardActions>
+      <Button className="mui-btn-primary">exchange</Button>
     </Card>
   );
 }
