@@ -22,7 +22,7 @@ export default function ProductCard({ item }) {
   const navigate = useNavigate();
 
   return (
-    <Card sx={{ width: 250 }} className="card">
+    <Card sx={{ width: 250 }} className="cards">
       <CardMedia
         component="img"
         image={item.image}

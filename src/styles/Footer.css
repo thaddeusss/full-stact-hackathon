@@ -1,3 +1,8 @@
+.main_footer {
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 .container {
   background-color: #6f73ee;
   position: absolute;
@@ -8,12 +13,6 @@
   position: relative;
   bottom: 0;
   margin-bottom: 0;
-}
-.main_footer {
-  /* position: absolute; */
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 
 .instBlock,
