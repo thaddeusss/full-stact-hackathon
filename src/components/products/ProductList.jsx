@@ -1,45 +1,33 @@
-import { Box, Pagination } from "@mui/material";
+import { Pagination } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import ProductCard from "./ProductCard";
 import { useProducts } from "../../contexts/ProductContextPovider";
+import ProductCard from "./ProductCard";
+
 const ProductList = () => {
-  const { products, getProducts } = useProducts();
-
+  const { getProducts, products, pages } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
-
-  const [page, setPage] = useState(1);
-  const itemsPerPage = 3;
-  const count = Math.ceil(products.length / itemsPerPage);
-  // useEffect(() => {
-  //   getProducts()
-  // },[])
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     getProducts();
-    setPage(1);
+  }, []);
+
+  // console.log(products);
+
+  useEffect(() => {
+    getProducts();
   }, [searchParams]);
 
-  const handlePage = (e, p) => {
-    console.log(p);
-    setPage(p);
-  };
-
-  function currentData() {
-    const begin = (page - 1) * itemsPerPage;
-    const end = begin + itemsPerPage;
-    return products.slice(begin, end);
-  }
+  useEffect(() => {
+    setSearchParams({
+      page: currentPage,
+    });
+  }, [currentPage]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        mt: 5,
-        flexDirection: "column",
-      }}
-    >
+    <div>
       <Box
         sx={{
           display: "flex",
@@ -47,22 +35,22 @@ const ProductList = () => {
           flexWrap: "wrap",
         }}
       >
-        {products ? (
-          currentData().map((item) => <ProductCard item={item} key={item.id} />)
-        ) : (
-          <h3>Loading...</h3>
-        )}
+        {products.map((item) => (
+          <ProductCard key={item.id} item={item} />
+        ))}
       </Box>
 
-      <Pagination
-        variant="outlined"
-        shape="rounded"
-        sx={{ m: "0 auto", marginTop: "2%" }}
-        count={count}
-        page={page}
-        onChange={handlePage}
-      />
-    </Box>
+      <Box>
+        <Pagination
+          sx={{ display: "flex", justifyContent: "center" }}
+          count={pages}
+          variant="outlined"
+          color="primary"
+          onChange={(e, page) => setCurrentPage(page)}
+          page={currentPage}
+        />
+      </Box>
+    </div>
   );
 };
 

@@ -19,8 +19,8 @@ const ProductDetailsPage = () => {
           <div class="product-left">
             <div class="header">
               <h1>{productDetails.title}</h1>
-              <h4>{productDetails.category}</h4>
             </div>
+            <h4>{productDetails.price}</h4>
             {/* <!--DESCRIPITON / DETAILS--> */}
             <div class="product-main">
               <div class="focus">
@@ -37,11 +37,7 @@ const ProductDetailsPage = () => {
             </div>
           </div>
           <div class="product-right">
-            <img
-              className="pd_img"
-              src="https://softech.kg/image/cache/d7f592a52318a514381813d58e6e140e.jpg"
-              alt=""
-            />
+            <img className="pd_img" src={productDetails.image} alt="" />
           </div>
         </div>
       </div>
