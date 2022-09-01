@@ -121,11 +121,20 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+
   const search = async (value) => {
     const { data } = await axios(`${API}changing/product/search/?q=${value}`);
 
     dispatch({
       type: "GET_PRODUCTS",
+      payload: data,
+    });
+  };
+
+  const getProductDetails = async (id) => {
+    const { data } = await axios.get(`${API}/changing/product/${id}/`);
+    dispatch({
+      type: ACTIONS.GET_PRODUCT_DETAILS,
       payload: data,
     });
   };
@@ -146,13 +155,6 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
-  const getProductDetails = async (id) => {
-    const { data } = await axios.get(`${API}/changing/product/${id}/`);
-    dispatch({
-      type: ACTIONS.GET_PRODUCT_DETAILS,
-      payload: data,
-    });
-  };
 
   return (
     <productContext.Provider
