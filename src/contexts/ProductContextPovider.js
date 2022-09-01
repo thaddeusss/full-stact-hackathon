@@ -156,6 +156,43 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  const getProductDetails = async (id) => {
+    const { data } = await axios.get(`${API}/changing/product/${id}/`);
+    dispatch({
+      type: ACTIONS.GET_PRODUCT_DETAILS,
+      payload: data,
+    });
+  };
+  const fetchByParams = (query, value) => {
+    const search = new URLSearchParams(window.location.search);
+
+    if (value === "all") {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+    const url = `${window.location.pathname}?${search.toString()}`;
+    navigate(url);
+  };
+
+  async function exchanching(newProduct) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(
+        `${API}/changing/product/add_to_trade/`,
+        newProduct,
+        config
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <productContext.Provider
       value={{
@@ -166,6 +203,8 @@ const ProductContextProvider = ({ children }) => {
         saveEditProduct,
         search,
         getProductDetails,
+        fetchByParams,
+        exchanching,
         products: state.products,
         pages: state.pages,
         categories: state.categories,

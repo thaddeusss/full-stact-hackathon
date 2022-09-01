@@ -5,3 +5,11 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+a {
+  text-decoration: none;
+}
+.react-fancy-visa-card .form button {
+  background: none !important;
+  background-color: #6f73ee !important;
+}

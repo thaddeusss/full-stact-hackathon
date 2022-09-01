@@ -69,6 +69,7 @@ const AddProduct = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
+        marginBottom: "8vh",
       }}
     >
       <Typography variant="h6" sx={{ m: 2 }}>
