@@ -6,8 +6,10 @@ import dostavks from "../assets/icons/delivery 1.svg";
 import "../styles/About.css";
 import SyncIcon from "@mui/icons-material/Sync";
 import { Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const AboutUsPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="about">
       <div className="h1">
@@ -73,9 +75,10 @@ const AboutUsPage = () => {
         </div>
         <div className="block1 navigate">
           <h1>посмотрите интерсное</h1>
-          <Link to="/Products">
-            <button className="btn_block">перейти</button>
-          </Link>
+
+          <button className="btn_block" onClick={() => navigate("/products")}>
+            перейти
+          </button>
         </div>
       </div>
     </div>

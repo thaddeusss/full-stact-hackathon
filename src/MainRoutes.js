@@ -9,6 +9,8 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProfilePage from "./pages/ProfilePage";
 import ProductCardPage from "./pages/ProductCardPage";
 import CartPage from "./pages/CartPage";
+import CreditCardForm from "./components/CreditCard";
+import TradePage from "./pages/TradePage";
 
 const MainRoutes = () => {
   const PUBLIC_ROUTES = [];
@@ -23,6 +25,8 @@ const MainRoutes = () => {
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/products/:id" element={<ProductDetailsPage />} />
+      <Route path="CreditCard" element={<CreditCardForm />} />
+      <Route path="Trade" element={<TradePage />} />
 
       {PUBLIC_ROUTES.map((item) => (
         <Route path={item.link} element={item.element} key={item.id} />

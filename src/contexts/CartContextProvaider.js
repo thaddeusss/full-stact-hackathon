@@ -31,8 +31,7 @@ function reducer(state = INIT_STATE, action) {
 const CartContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
-  function getCart() {
-    console.log("mfsefuse");
+  const getCart = () => {
     let cart = JSON.parse(localStorage.getItem("cart"));
 
     if (!cart) {
@@ -50,8 +49,7 @@ const CartContextProvider = ({ children }) => {
       type: CART.GET_CART,
       payload: cart,
     });
-    console.log(cart);
-  }
+  };
 
   const addProductToCart = (product) => {
     let cart = JSON.parse(localStorage.getItem("cart"));
@@ -73,6 +71,10 @@ const CartContextProvider = ({ children }) => {
       (elem) => elem.item.id === product.id
     );
 
+    // если не найдется элемент в localStorage,
+    // то он добавит элемент в localStorage,а если найдет, то удалит
+
+    // если не найдется элемент в localStorage, то он добавит элемент в localStorage,а если найдет, то удалит
     if (productToFind.length === 0) {
       cart.products.push(newProduct);
     } else {

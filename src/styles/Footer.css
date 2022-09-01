@@ -1,16 +1,15 @@
-.container {
+.footer_container {
   background-color: #6f73ee;
-  position: absolute;
-  bottom: 0;
   font-family: "Jost", sans-serif;
   padding-top: 3vh;
   padding-bottom: 2vh;
+  padding-right: 2vw;
+  padding-left: 2vw;
   position: relative;
-  bottom: 0;
   margin-bottom: 0;
 }
 .main_footer {
-  /* position: absolute; */
+  position: relative;
   bottom: 0;
   right: 0;
   left: 0;
@@ -84,6 +83,10 @@ p {
   margin-right: 2vw;
   font-size: 14px;
   flex-wrap: wrap;
+}
+
+.footer_a {
+  color: black;
 }
 
 @media only screen and (max-width: 490px) {

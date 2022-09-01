@@ -12,48 +12,41 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
-import { useProducts } from "../../contexts/ProductContextPovider";
-import "../../styles/AddProduct.css";
+import { useProducts } from "../contexts/ProductContextPovider";
+// import "../../styles/AddProduct.css";
 
-const AddProduct = () => {
-  const { getCategories, categories, addProducts } = useProducts();
+const AddTrade = () => {
+  const { exchanching } = useProducts();
 
-  const [product, setProduct] = useState({
-    title: "",
-    desc: "",
-    categories: [1],
-    owner: "",
-    image: "",
+  const [trade, settrade] = useState({
+    user1: "",
+    user2: "",
+    Product1: "",
+    Product2: "",
   });
 
   const handleInp = (e) => {
-    if (e.target.name === "image") {
-      setProduct({
-        ...product,
+    if (e.target.name === "Product2") {
+      settrade({
+        ...trade,
         [e.target.name]: e.target.files[0],
       });
     } else {
-      setProduct({
-        ...product,
+      settrade({
+        ...trade,
         [e.target.name]: e.target.value,
       });
     }
   };
 
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  console.log(categories);
-
   function handleSave() {
-    let newProduct = new FormData();
-    newProduct.append("title", product.title);
-    newProduct.append("desc", product.desc);
-    newProduct.append("owner", product.owner);
-    newProduct.append("categories", product.categories);
-    newProduct.append("image", product.image);
-    addProducts(newProduct);
+    let newtrade = new FormData();
+    newtrade.append("user1", trade.user1);
+    newtrade.append("user2", trade.user2);
+    newtrade.append("Product1", trade.Product1);
+
+    newtrade.append("Product2", trade.Product2);
+    exchanching(newtrade);
   }
 
   return (
@@ -69,56 +62,50 @@ const AddProduct = () => {
       }}
     >
       <Typography variant="h6" sx={{ m: 2 }}>
-        Add new product
+        Add new trade
       </Typography>
       <TextField
         className="inp"
         sx={{ outlineColor: "main" }}
         id="standard-basic"
-        label="Title"
+        label="user1"
         variant="outlined"
         fullWidth
-        name="title"
+        name="user1"
         onChange={handleInp}
-        value={product.title}
+        value={trade.user1}
       />
       <TextField
         className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
-        label="Description"
+        label="user2"
         variant="outlined"
         fullWidth
-        name="desc"
+        name="user2"
         onChange={handleInp}
-        value={product.desc}
+        value={trade.desc}
       />
       <TextField
         className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
-        label="owner"
+        label="Product1"
         variant="outlined"
         fullWidth
-        name="owner"
+        name="Product1"
         onChange={handleInp}
-        value={product.owner}
-      />
-      <TextField
-        className="inp"
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Category"
-        variant="outlined"
-        fullWidth
-        name="category"
+        value={trade.Product1}
       />
 
-      <input
-        type="file"
-        name="image"
-        className="inp-img"
-        onChange={handleInp}
+      <TextField
+        className="inp"
+        sx={{ m: 1 }}
+        id="standard-basic"
+        label="Product2"
+        variant="outlined"
+        fullWidth
+        name="Product2"
       />
 
       <Button
@@ -130,10 +117,10 @@ const AddProduct = () => {
         size="large"
         onClick={handleSave}
       >
-        ADD PRODUCT
+        ADD trade
       </Button>
     </Box>
   );
 };
 
-export default AddProduct;
+export default AddTrade;

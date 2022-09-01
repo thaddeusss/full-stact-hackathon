@@ -47,6 +47,23 @@ export default function ProductCard({ item }) {
           {item.title}
         </Typography>
       </CardContent>
+
+      <CardContent>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            // textOverflow: "ellipsis",
+            // overflow: "hidden",
+            width: "90%",
+            height: "20px",
+            cursor: "pointer",
+          }}
+        >
+          {item.id}
+        </Typography>
+      </CardContent>
+
       <CardContent>
         <Typography
           variant="body2"
