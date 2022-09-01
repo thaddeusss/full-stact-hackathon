@@ -19,7 +19,7 @@ import Menu from "./Menu";
 import { useProducts } from "../contexts/ProductContextPovider";
 import { useEffect, useState } from "react";
 import { useAuth } from "../contexts/AuthContextProvider";
-import { Button } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 const Navbar = () => {
   const { search, getProducts, fetchByParams } = useProducts();
@@ -73,20 +73,23 @@ const Navbar = () => {
             <Link to="/products">
               <SyncIcon sx={{ color: "#6F73EE" }} className="logo" />
             </Link>
-
+          </div>
+          <div>
             {user ? (
               <Link to="/profile" className="profile">
                 <PersonOutlineIcon sx={{ color: "#6F73EE", ml: "6vw" }} />
               </Link>
             ) : (
               <>
-                <Link to="/register">
-                  <Button color="inherit">Register</Button>
-                </Link>
+                <Box className="register">
+                  <Link to="/register">
+                    <Button color="inherit">Register</Button>
+                  </Link>
 
-                <Link to="/login">
-                  <Button color="inherit">Login</Button>
-                </Link>
+                  <Link to="/login">
+                    <Button color="inherit">Login</Button>
+                  </Link>
+                </Box>
               </>
             )}
           </div>

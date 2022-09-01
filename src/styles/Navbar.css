@@ -87,6 +87,10 @@ li {
   height: inherit !important;
   width: 3vw !important;
 }
+.register {
+  display: flex;
+  justify-content: center;
+}
 
 @media screen and (max-width: 768px) {
   .navbar {

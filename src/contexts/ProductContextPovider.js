@@ -121,11 +121,20 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+
   const search = async (value) => {
     const { data } = await axios(`${API}changing/product/search/?q=${value}`);
 
     dispatch({
       type: "GET_PRODUCTS",
+      payload: data,
+    });
+  };
+
+  const getProductDetails = async (id) => {
+    const { data } = await axios.get(`${API}/changing/product/${id}/`);
+    dispatch({
+      type: ACTIONS.GET_PRODUCT_DETAILS,
       payload: data,
     });
   };
@@ -146,25 +155,6 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
-  const getProductDetails = async (id) => {
-    const { data } = await axios.get(`${API}/changing/product/${id}/`);
-    dispatch({
-      type: ACTIONS.GET_PRODUCT_DETAILS,
-      payload: data,
-    });
-  };
-  const fetchByParams = (query, value) => {
-    const search = new URLSearchParams(window.location.search);
-
-    if (value === "all") {
-      search.delete(query);
-    } else {
-      search.set(query, value);
-    }
-    const url = `${window.location.pathname}?${search.toString()}`;
-    navigate(url);
-  };
-
   async function exchanching(newProduct) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
@@ -183,6 +173,7 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+
   return (
     <productContext.Provider
       value={{
@@ -193,7 +184,6 @@ const ProductContextProvider = ({ children }) => {
         saveEditProduct,
         search,
         getProductDetails,
-        fetchByParams,
         exchanching,
         products: state.products,
         pages: state.pages,

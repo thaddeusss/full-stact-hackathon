@@ -1,15 +1,4 @@
-import {
-  Box,
-  Button,
-  createTheme,
-  FormControl,
-  Input,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 import { useProducts } from "../../contexts/ProductContextPovider";
@@ -23,6 +12,8 @@ const AddProduct = () => {
     desc: "",
     categories: [1],
     owner: "",
+    price: "",
+    room_name: "",
     image: "",
   });
 
@@ -50,6 +41,8 @@ const AddProduct = () => {
     let newProduct = new FormData();
     newProduct.append("title", product.title);
     newProduct.append("desc", product.desc);
+    newProduct.append("price", product.price);
+    newProduct.append("room_name", product.room_name);
     newProduct.append("owner", product.owner);
     newProduct.append("categories", product.categories);
     newProduct.append("image", product.image);
@@ -93,6 +86,30 @@ const AddProduct = () => {
         onChange={handleInp}
         value={product.desc}
       />
+
+      <TextField
+        className="inp"
+        sx={{ m: 1 }}
+        id="standard-basic"
+        label="Price"
+        variant="outlined"
+        fullWidth
+        name="price"
+        onChange={handleInp}
+        value={product.price}
+      />
+      <TextField
+        className="inp"
+        sx={{ m: 1 }}
+        id="standard-basic"
+        label="Room_name"
+        variant="outlined"
+        fullWidth
+        name="room_name"
+        onChange={handleInp}
+        value={product.room_name}
+      />
+
       <TextField
         className="inp"
         sx={{ m: 1 }}

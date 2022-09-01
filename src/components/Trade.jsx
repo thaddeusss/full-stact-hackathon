@@ -44,7 +44,6 @@ const AddTrade = () => {
     newtrade.append("user1", trade.user1);
     newtrade.append("user2", trade.user2);
     newtrade.append("Product1", trade.Product1);
-
     newtrade.append("Product2", trade.Product2);
     exchanching(newtrade);
   }
