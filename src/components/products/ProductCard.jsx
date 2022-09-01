@@ -15,11 +15,10 @@ import MoreIcon from "@mui/icons-material/More";
 import { useProducts } from "../../contexts/ProductContextPovider";
 
 import "../../styles/ProductCard.css";
-// import { useCart } from "../../contexts/CartContextProvaider";
 import { useCart } from "../../contexts/CartContextProvaider";
 
 export default function ProductCard({ item }) {
-  const { deleteProduct, saveEditProduct } = useProducts();
+  const { deleteProduct } = useProducts();
   const { addProductToCart, checkProductInCart } = useCart();
   const navigate = useNavigate();
 
@@ -30,7 +29,7 @@ export default function ProductCard({ item }) {
         image={item.image}
         alt="img"
         className="card_img"
-        sx={{ height: "50%" }}
+        sx={{ height: "60%" }}
       />
       <CardContent>
         <Typography
@@ -61,6 +60,23 @@ export default function ProductCard({ item }) {
           }}
         >
           {item.id}
+        </Typography>
+      </CardContent>
+
+
+      <CardContent>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            width: "90%",
+            height: "20px",
+            cursor: "pointer",
+          }}
+        >
+          {item.price}
         </Typography>
       </CardContent>
 
@@ -102,7 +118,10 @@ export default function ProductCard({ item }) {
           <DeleteOutlineIcon />
         </Button>
 
-        <Button onClick={() => saveEditProduct(item.id)} className="mui-btn">
+        <Button
+          onClick={() => navigate(`/edit/${item.id}`)}
+          className="mui-btn"
+        >
           <EditIcon />
         </Button>
 

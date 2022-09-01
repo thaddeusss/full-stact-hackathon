@@ -1,18 +1,18 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useProducts } from "../../contexts/ProductContextProvider";
+import { useProducts } from "../../contexts/ProductContextPovider";
 
 const EditProduct = () => {
-  const { getProductDetails, productDetails, saveEditedProduct } =
-    useProducts();
+  const {
+    getProductDetails,
+    productDetails,
+    getCategories,
+    categories,
+    saveEditProduct,
+  } = useProducts();
 
-  const [product, setProduct] = useState(productDetails);
-
-  const navigate = useNavigate();
-
-  // console.log(productDetails, "productDetails");
-  // console.log(product, "product");
+  const [product, setProduct] = useState(getProductDetails);
 
   const { id } = useParams();
 
@@ -25,26 +25,41 @@ const EditProduct = () => {
   }, []);
 
   const handleInp = (e) => {
-    if (e.target.name === "price") {
-      let obj = {
+    if (e.target.name === "image") {
+      setProduct({
         ...product,
-        [e.target.name]: Number(e.target.value),
-      };
-      setProduct(obj);
+        [e.target.name]: e.target.files[0],
+      });
     } else {
-      let obj = {
+      setProduct({
         ...product,
         [e.target.name]: e.target.value,
-      };
-      setProduct(obj);
+      });
     }
   };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  console.log(categories);
+
+  function handleSave() {
+    let newProduct = new FormData();
+    newProduct.append("title", product.title);
+    newProduct.append("desc", product.desc);
+    newProduct.append("owner", product.owner);
+    newProduct.append("categories", product.categories);
+    newProduct.append("price", product.price);
+    newProduct.append("image", product.image);
+    saveEditProduct(newProduct);
+  }
 
   return (
     <Box
       sx={{
         width: "40vw",
-        margin: "10vh auto",
+        margin: "0 auto",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -52,84 +67,79 @@ const EditProduct = () => {
       }}
     >
       <Typography variant="h6" sx={{ m: 2 }}>
-        Edit product
+        save product
       </Typography>
       <TextField
-        sx={{ m: 1 }}
+        className="inp"
+        sx={{ outlineColor: "main" }}
         id="standard-basic"
-        label="Name"
+        label="Title"
         variant="outlined"
-        color="secondary"
         fullWidth
-        name="name"
+        name="title"
         onChange={handleInp}
-        value={product.name || ""}
-        focused
+        value={product.title}
       />
       <TextField
+        className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
         label="Description"
         variant="outlined"
-        color="secondary"
         fullWidth
-        name="description"
+        name="desc"
         onChange={handleInp}
-        value={product.description || ""}
-        focused
+        value={product.desc}
       />
       <TextField
+        className="inp"
+        sx={{ m: 1 }}
+        id="standard-basic"
+        label="owner"
+        variant="outlined"
+        fullWidth
+        name="owner"
+        onChange={handleInp}
+        value={product.owner}
+      />
+      <TextField
+        className="inp"
+        sx={{ m: 1 }}
+        id="standard-basic"
+        label="Category"
+        variant="outlined"
+        fullWidth
+        name="category"
+      />
+      <TextField
+        className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
         label="Price"
         variant="outlined"
-        color="secondary"
         fullWidth
         name="price"
         onChange={handleInp}
-        value={product.price || ""}
-        focused
+        value={product.price}
       />
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Picture"
-        variant="outlined"
-        color="secondary"
-        fullWidth
-        name="picture"
+
+      <input
+        type="file"
+        name="image"
+        className="inp-img"
         onChange={handleInp}
-        value={product.picture || ""}
-        focused
       />
-      <TextField
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Type"
-        variant="outlined"
-        color="secondary"
-        fullWidth
-        name="type"
-        onChange={handleInp}
-        value={product.type || ""}
-        focused
-      />
+
       <Button
         sx={{
           m: 1,
-          bgcolor: "#8C2CEF",
-          color: "#fff",
-          "&:hover": { bgcolor: "#8125DC" },
         }}
         variant="outlined"
         fullWidth
         size="large"
-        onClick={() => {
-          saveEditedProduct(product);
-          navigate("/products");
-        }}
+        onClick={handleSave}
       >
-        SAVE PRODUCT
+        save PRODUCT
       </Button>
     </Box>
   );

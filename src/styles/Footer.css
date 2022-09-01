@@ -1,4 +1,10 @@
-.footer_container {
+
+.main_footer {
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.container {
   background-color: #6f73ee;
   font-family: "Jost", sans-serif;
   padding-top: 3vh;
@@ -14,6 +20,7 @@
   right: 0;
   left: 0;
 }
+
 
 .instBlock,
 .ytBlock,
