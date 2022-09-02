@@ -9,11 +9,9 @@ export const useProducts = () => useContext(productContext);
 const INIT_STATE = {
   products: [],
   pages: 0,
-  oneProduct: null,
   categories: [],
   productDetails: {},
 };
-
 function reducer(state = INIT_STATE, action) {
   switch (action.type) {
     case "GET_PRODUCTS":
@@ -139,17 +137,17 @@ const ProductContextProvider = ({ children }) => {
     });
   };
 
-  async function saveEditProduct(id) {
+  async function saveEditProduct(newProduct, id) {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const Authorization = `Bearer ${token.access}`;
       const config = {
         headers: {
+          "Content-Type": "multipart/form-data",
           Authorization,
         },
       };
-
-      await axios.patch(`${API}/changing/product/${id}/`, config);
+      await axios.patch(`${API}/changing/product/${id}/`, newProduct, config);
       getProducts();
     } catch (error) {
       console.log(error);
@@ -174,6 +172,51 @@ const ProductContextProvider = ({ children }) => {
     }
   }
 
+  // const getOneProducr = async (id) => {
+  //   const { data } = await axios.get(`${API}/changing/product/${id}/`);
+  //   dispatch({
+  //     type: ACTIONS.GET_PRODUCT_DETAILS,
+  //     payload: data,
+  //   });
+  // };
+
+  const getProductDetails = async (id) => {
+    const { data } = await axios.get(`${API}/changing/product/${id}/`);
+    dispatch({
+      type: ACTIONS.GET_PRODUCT_DETAILS,
+      payload: data,
+    });
+  };
+  const fetchByParams = (query, value) => {
+    const search = new URLSearchParams(window.location.search);
+
+    if (value === "all") {
+      search.delete(query);
+    } else {
+      search.set(query, value);
+    }
+    const url = `${window.location.pathname}?${search.toString()}`;
+    navigate(url);
+  };
+
+  async function exchanching(newProduct) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(
+        `${API}/changing/product/add_to_trade/`,
+        newProduct,
+        config
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <productContext.Provider
       value={{
@@ -184,6 +227,9 @@ const ProductContextProvider = ({ children }) => {
         saveEditProduct,
         search,
         getProductDetails,
+
+        fetchByParams,
+
         exchanching,
         products: state.products,
         pages: state.pages,

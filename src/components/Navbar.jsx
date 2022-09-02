@@ -114,6 +114,7 @@ const Navbar = () => {
               sx={{ mb: "4px", width: "22px" }}
               className="cart"
               onClick={() => navigate("/cart")}
+
             />
           </div>
         </div>

@@ -14,8 +14,6 @@ const ProductList = () => {
     getProducts();
   }, []);
 
-  // console.log(products);
-
   useEffect(() => {
     getProducts();
   }, [searchParams]);
