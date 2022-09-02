@@ -34,10 +34,11 @@ export default function ProductCard({ item }) {
       <CardContent>
         <Typography
           variant="body2"
-          color="text.secondary"
+          // color="text.secondary"
           sx={{
-            // textOverflow: "ellipsis",
+            textOverflow: "ellipsis",
             // overflow: "hidden",
+            textTransform: "uppercase",
             width: "90%",
             height: "20px",
             cursor: "pointer",
@@ -47,22 +48,36 @@ export default function ProductCard({ item }) {
         </Typography>
       </CardContent>
 
-      <CardContent>
+      {/* <CardContent>
         <Typography
           variant="body2"
           color="text.secondary"
           sx={{
-            // textOverflow: "ellipsis",
-            // overflow: "hidden",
-            width: "90%",
+            textOverflow: "ellipsis",
+            cursor: "pointer",
+          }}
+        >
+          Id: {item.id}
+        </Typography>
+      </CardContent> */}
+
+
+      <CardContent>
+        <Typography
+          variant="body2"
+          // color="text.secondary"
+          sx={{
+            textOverflow: "ellipsis",
+            overflow: "hidden",
+            // width: "90%",
+            textTransform: "uppercase",
             height: "20px",
             cursor: "pointer",
           }}
         >
-          {item.id}
+          Price: {item.price} Id: {item.id}
         </Typography>
       </CardContent>
-
 
       <CardContent>
         <Typography
@@ -71,23 +86,7 @@ export default function ProductCard({ item }) {
           sx={{
             textOverflow: "ellipsis",
             overflow: "hidden",
-            width: "90%",
-            height: "20px",
-            cursor: "pointer",
-          }}
-        >
-          {item.price}
-        </Typography>
-      </CardContent>
-
-      <CardContent>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            textOverflow: "ellipsis",
-            overflow: "hidden",
-            width: "90%",
+            width: "100%",
             height: "20px",
             cursor: "pointer",
           }}

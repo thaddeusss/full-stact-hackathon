@@ -12,9 +12,9 @@ const ProductDetailsPage = () => {
           <div class="product-left">
             <div class="header">
               <h1>{productDetails.title}</h1>
+              <h2>Id: {productDetails.id}</h2>
             </div>
-            <h4>{productDetails.price}</h4>
-            {/* <!--DESCRIPITON / DETAILS--> */}
+            <h4>Price: {productDetails.price}</h4>
             <div class="product-main">
               <div class="focus">
                 <span>Описание</span>
@@ -22,7 +22,6 @@ const ProductDetailsPage = () => {
               </div>
               <p>{productDetails.desc}</p>
             </div>
-            {/* <!-- ADD TO CART BUTTON --> */}
             <div class="product-btns">
               <a href="#" class="product-add">
                 Забрать

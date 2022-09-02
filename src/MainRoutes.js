@@ -7,6 +7,11 @@ import AboutUsPage from "./pages/AboutUsPage";
 import AdminPage from "./pages/AdminPage";
 
 import NotFoundPage from "./pages/NotFoundPage";
+import ProductCardPage from "./pages/ProductCardPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProfilePage from "./pages/ProfilePage";
+import CartPage from "./pages/CartPage";
+import EditProduct from "./components/products/EditProduct";
 
 import ProductCardPage from "./pages/ProductCardPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
@@ -41,7 +46,7 @@ const MainRoutes = () => {
       ))}
 
       <Route path="/*" element={<NotFoundPage />} />
-      <Route path="/edit/:id" element={<EditProductPage />} />
+      <Route path="/edit/:id" element={<EditProduct />} />
     </Routes>
   );
 };

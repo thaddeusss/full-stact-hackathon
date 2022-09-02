@@ -21,7 +21,7 @@ const AddProduct = () => {
   const [product, setProduct] = useState({
     title: "",
     desc: "",
-    categories: [1],
+    categories: [0],
     owner: "",
     price: "",
     room_name: "",
@@ -113,7 +113,7 @@ const AddProduct = () => {
         className="inp"
         sx={{ m: 1 }}
         id="standard-basic"
-        label="Room_name"
+        label="room_name"
         variant="outlined"
         fullWidth
         name="room_name"
@@ -132,15 +132,23 @@ const AddProduct = () => {
         onChange={handleInp}
         value={product.owner}
       />
-      <TextField
-        className="inp"
-        sx={{ m: 1 }}
-        id="standard-basic"
-        label="Category"
-        variant="outlined"
-        fullWidth
-        name="category"
-      />
+      <FormControl sx={{ mt: 1 }} fullWidth>
+        <InputLabel id="demo-simple-select-label">category</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          label="Категории"
+          onChange={handleInp}
+          value={product.categories}
+          name="categories"
+        >
+          {categories?.map((item) => (
+            <MenuItem value={item.id} key={item.id} onChange={handleInp}>
+              {item.title}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
       <input
         type="file"
