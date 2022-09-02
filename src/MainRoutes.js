@@ -7,6 +7,17 @@ import AboutUsPage from "./pages/AboutUsPage";
 import AdminPage from "./pages/AdminPage";
 
 import NotFoundPage from "./pages/NotFoundPage";
+
+
+import ProductCardPage from "./pages/ProductCardPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
+import ProfilePage from "./pages/ProfilePage";
+
+import CartPage from "./pages/CartPage";
+
+import CreditCardForm from "./components/CreditCard";
+import TradePage from "./pages/TradePage";
+
 import ProductCardPage from "./pages/ProductCardPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import ProfilePage from "./pages/ProfilePage";
@@ -33,10 +44,13 @@ const MainRoutes = () => {
       <Route path="/about" element={<AboutUsPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/details" element={<ProductDetailsPage />} /> */}
+      <Route path="/details" element={<ProductDetailsPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/products/:id" element={<ProductDetailsPage />} />
+
+      <Route path="CreditCard" element={<CreditCardForm />} />
+      <Route path="Trade" element={<TradePage />} 
 
       <Route path="CreditCard" element={<CreditCardForm />} />
       <Route path="Trade" element={<TradePage />} />

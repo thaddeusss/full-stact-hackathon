@@ -131,7 +131,9 @@ export default function ProductCard({ item }) {
           <MoreIcon />
         </Button>
       </CardActions>
-      <Button className="mui-btn-primary">exchange</Button>
+      <Button className="mui-btn-primary" onClick={() => navigate("/trade")}>
+        exchange
+      </Button>
     </Card>
   );
 }

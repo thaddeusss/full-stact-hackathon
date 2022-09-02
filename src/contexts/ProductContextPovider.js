@@ -153,6 +153,24 @@ const ProductContextProvider = ({ children }) => {
       console.log(error);
     }
   }
+  async function exchanching(newProduct) {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      const Authorization = `Bearer ${token.access}`;
+      const config = {
+        headers: {
+          Authorization,
+        },
+      };
+      const res = await axios.post(
+        `${API}/changing/product/add_to_trade/`,
+        newProduct,
+        config
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   // const getOneProducr = async (id) => {
   //   const { data } = await axios.get(`${API}/changing/product/${id}/`);
@@ -209,7 +227,9 @@ const ProductContextProvider = ({ children }) => {
         saveEditProduct,
         search,
         getProductDetails,
+
         fetchByParams,
+
         exchanching,
         products: state.products,
         pages: state.pages,

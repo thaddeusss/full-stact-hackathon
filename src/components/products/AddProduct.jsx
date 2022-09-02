@@ -1,15 +1,4 @@
-import {
-  Box,
-  Button,
-  createTheme,
-  FormControl,
-  Input,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 import { useProducts } from "../../contexts/ProductContextPovider";
