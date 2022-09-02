@@ -198,7 +198,7 @@ const CartPage = () => {
                     </div>
                     <div className="cardPage_cost">
                       <p className="cardPage_cos">Цена:</p>
-                      <p>{row.item.price}₽</p>
+                      <p>{row.item.price}$</p>
                     </div>
                   </div>
                 </div>
@@ -222,7 +222,7 @@ const CartPage = () => {
                   className="cardPage_sum__cost"
                   style={{ marginBottom: "20px" }}
                 >
-                  {cart?.totalPrice} ₽
+                  {cart?.totalPrice} $
                 </p>
               </div>
             </div>

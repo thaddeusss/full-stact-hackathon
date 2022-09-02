@@ -19,10 +19,10 @@ const AddTrade = () => {
   const { exchanching } = useProducts();
 
   const [trade, settrade] = useState({
-    user1: "",
-    user2: "",
-    Product1: "",
-    Product2: "",
+    user1: 0,
+    user2: 0,
+    product1: 0,
+    product2: 0,
   });
 
   const handleInp = (e) => {
@@ -41,11 +41,11 @@ const AddTrade = () => {
 
   function handleSave() {
     let newtrade = new FormData();
-    newtrade.append("user1", trade.user1);
-    newtrade.append("user2", trade.user2);
-    newtrade.append("Product1", trade.Product1);
+    newtrade.append("user1", +trade.user1);
+    newtrade.append("user2", +trade.user2);
+    newtrade.append("product1", +trade.product1);
 
-    newtrade.append("Product2", trade.Product2);
+    newtrade.append("product2", +trade.product2);
     exchanching(newtrade);
   }
 
@@ -73,7 +73,7 @@ const AddTrade = () => {
         fullWidth
         name="user1"
         onChange={handleInp}
-        value={trade.user1}
+        // value={trade.user1}
       />
       <TextField
         className="inp"
@@ -84,7 +84,7 @@ const AddTrade = () => {
         fullWidth
         name="user2"
         onChange={handleInp}
-        value={trade.desc}
+        // value={trade.desc}
       />
       <TextField
         className="inp"
@@ -93,9 +93,9 @@ const AddTrade = () => {
         label="Product1"
         variant="outlined"
         fullWidth
-        name="Product1"
+        name="product1"
         onChange={handleInp}
-        value={trade.Product1}
+        // value={trade.Product1}
       />
 
       <TextField
@@ -105,7 +105,8 @@ const AddTrade = () => {
         label="Product2"
         variant="outlined"
         fullWidth
-        name="Product2"
+        name="product2"
+        onChange={handleInp}
       />
 
       <Button

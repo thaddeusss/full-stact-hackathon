@@ -17,7 +17,7 @@ function reducer(state = INIT_STATE, action) {
     case "GET_PRODUCTS":
       return {
         ...state,
-        products: action.payload.results,
+        products: action.payload,
         pages: Math.ceil(action.payload.count / 5),
       };
     case "GET_CATEGORIES":
@@ -51,10 +51,9 @@ const ProductContextProvider = ({ children }) => {
         `${API}/changing/product/${window.location.search}`,
         config
       );
-      console.log(res);
       dispatch({
         type: "GET_PRODUCTS",
-        payload: res.data,
+        payload: res.data.results,
       });
     } catch (error) {
       console.log(error);
@@ -121,7 +120,9 @@ const ProductContextProvider = ({ children }) => {
   }
 
   const search = async (value) => {
-    const { data } = await axios(`${API}changing/product/search/?q=${value}`);
+    const { data } = await axios(
+      `${API}/changing/product/search/?title=${value}`
+    );
 
     dispatch({
       type: "GET_PRODUCTS",
@@ -163,10 +164,11 @@ const ProductContextProvider = ({ children }) => {
         },
       };
       const res = await axios.post(
-        `${API}/changing/product/add_to_trade/`,
+        `${API}/changing/products/add_to_trade/`,
         newProduct,
         config
       );
+      console.log(res.data);
     } catch (error) {
       console.log(error);
     }
@@ -180,43 +182,43 @@ const ProductContextProvider = ({ children }) => {
   //   });
   // };
 
-  const getProductDetails = async (id) => {
-    const { data } = await axios.get(`${API}/changing/product/${id}/`);
-    dispatch({
-      type: ACTIONS.GET_PRODUCT_DETAILS,
-      payload: data,
-    });
-  };
-  const fetchByParams = (query, value) => {
-    const search = new URLSearchParams(window.location.search);
+  // const getProductDetails = async (id) => {
+  //   const { data } = await axios.get(`${API}/changing/product/${id}/`);
+  //   dispatch({
+  //     type: ACTIONS.GET_PRODUCT_DETAILS,
+  //     payload: data,
+  //   });
+  // };
+  // const fetchByParams = (query, value) => {
+  //   const search = new URLSearchParams(window.location.search);
 
-    if (value === "all") {
-      search.delete(query);
-    } else {
-      search.set(query, value);
-    }
-    const url = `${window.location.pathname}?${search.toString()}`;
-    navigate(url);
-  };
+  //   if (value === "all") {
+  //     search.delete(query);
+  //   } else {
+  //     search.set(query, value);
+  //   }
+  //   const url = `${window.location.pathname}?${search.toString()}`;
+  //   navigate(url);
+  // };
 
-  async function exchanching(newProduct) {
-    try {
-      const token = JSON.parse(localStorage.getItem("token"));
-      const Authorization = `Bearer ${token.access}`;
-      const config = {
-        headers: {
-          Authorization,
-        },
-      };
-      const res = await axios.post(
-        `${API}/changing/product/add_to_trade/`,
-        newProduct,
-        config
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async function exchanching(newProduct) {
+  //   try {
+  //     const token = JSON.parse(localStorage.getItem("token"));
+  //     const Authorization = `Bearer ${token.access}`;
+  //     const config = {
+  //       headers: {
+  //         Authorization,
+  //       },
+  //     };
+  //     const res = await axios.post(
+  //       `${API}/changing/products/add_to_trade/`,
+  //       newProduct,
+  //       config
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   return (
     <productContext.Provider
       value={{
@@ -228,7 +230,7 @@ const ProductContextProvider = ({ children }) => {
         search,
         getProductDetails,
 
-        fetchByParams,
+        // fetchByParams,
 
         exchanching,
         products: state.products,

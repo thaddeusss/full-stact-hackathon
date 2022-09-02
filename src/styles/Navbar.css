@@ -30,6 +30,7 @@ li {
   width: 35vw;
   /* height: 2vw; */
   border: 1px solid #6f73ee;
+  border-radius: 15px 0 0 15px;
   outline: inherit;
   outline-color: rgb(22, 141, 245);
   margin-top: 0 auto !important;

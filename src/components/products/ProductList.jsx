@@ -6,17 +6,18 @@ import { useProducts } from "../../contexts/ProductContextPovider";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
-  const { getProducts, products, pages } = useProducts();
+  const { getProducts, products, pages, search } = useProducts();
   const [searchParams, setSearchParams] = useSearchParams();
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentData, setCurrentData] = useState([]);
 
   useEffect(() => {
     getProducts();
   }, []);
 
   useEffect(() => {
-    getProducts();
-  }, [searchParams]);
+    setCurrentData(products);
+  }, [[products]]);
 
   useEffect(() => {
     setSearchParams({
@@ -33,7 +34,7 @@ const ProductList = () => {
           flexWrap: "wrap",
         }}
       >
-        {products.map((item) => (
+        {currentData?.map((item) => (
           <ProductCard key={item.id} item={item} />
         ))}
       </Box>
