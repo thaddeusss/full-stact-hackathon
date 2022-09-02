@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useProducts } from "../contexts/ProductContextPovider";
-import "../styles/ProductDetails.css";
+import React from "react";
+import ProductDetails from "../components/products/ProductDetails";
 
 const ProductDetailsPage = () => {
-  const { id } = useParams();
-  const { getProductDetails, productDetails } = useProducts();
-
-  useEffect(() => {
-    getProductDetails(id);
-  }, []);
-  console.log(productDetails);
-
   return (
     <div>
+
+      <ProductDetails />
+
       <div class="wrapper">
         <div class="card">
           <div class="product-left">

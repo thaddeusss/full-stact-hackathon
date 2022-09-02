@@ -22,7 +22,7 @@ import { useAuth } from "../contexts/AuthContextProvider";
 import { Button } from "@mui/material";
 
 const Navbar = () => {
-  const { search, getProducts } = useProducts();
+  const { search, getProducts, fetchByParams } = useProducts();
   const [stateSearch, setSearch] = useState("");
   const { user, checkAuth, error } = useAuth();
 
@@ -59,7 +59,9 @@ const Navbar = () => {
             <div>
               <InstagramIcon className="icon" sx={{ color: "#6F73EE" }} />
               <FacebookIcon className="icon" sx={{ color: "#6F73EE" }} />
-              <TelegramIcon className="icon" sx={{ color: "#6F73EE" }} />
+              <a href="https://web.telegram.org/z/">
+                <TelegramIcon className="icon" sx={{ color: "#6F73EE" }} />
+              </a>
             </div>
           </ul>
 
@@ -108,13 +110,16 @@ const Navbar = () => {
               alt=""
               sx={{ mb: "4px", width: "22px" }}
               className="cart"
-              onClick={() => navigate(`/cart`)}
+              onClick={() => navigate("/cart")}
+
             />
-            корзина
           </div>
         </div>
       </div>
-      <div className="filter">
+      <div
+        className="filter"
+        onChange={(e) => fetchByParams("type", e.target.value)}
+      >
         <div>
           <HomeIcon
             sx={{ color: "#6F73EE", width: "25%", height: "inherit" }}
