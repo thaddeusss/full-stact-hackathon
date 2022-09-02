@@ -30,7 +30,7 @@ const ProfilePage = () => {
           </p>
         </div>
         <div className="profile_add">
-          <a onClick={() => navigate("/add")} className="prof_addbut">
+          <a onClick={() => navigate(`/add`)} className="prof_addbut">
             Добавить
           </a>
         </div>

@@ -40,15 +40,15 @@ const Footer = () => {
             </Link>
           </Box>
           <Box className="foot_nav">
-            <Link to="/about" className="footer_a">
+            <Link to="/products" className="footer_a">
               <p>Каталог</p>
             </Link>
-            <Link to="/login" className="footer_a">
+            {/* <Link to="/login" className="footer_a">
               <p>Войти</p>
             </Link>
             <Link to="/register" className="footer_a">
               <p>Регистрация</p>
-            </Link>
+            </Link> */}
           </Box>
         </Box>
         <Box borderBottom={1} sx={{ marginTop: "5vh" }} />

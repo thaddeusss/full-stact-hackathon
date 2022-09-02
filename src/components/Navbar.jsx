@@ -29,9 +29,8 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setSearch();
-  }, [search]);
-  console.log(stateSearch);
+    search(stateSearch);
+  }, [stateSearch]);
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -50,12 +49,12 @@ const Navbar = () => {
             >
               <li> О нас </li>
             </Link>
-            <Link to="#" style={{ textDecoration: "none", color: "black" }}>
+            {/* <Link to="#" style={{ textDecoration: "none", color: "black" }}>
               <li> Помощь </li>
             </Link>
             <Link to="#" style={{ textDecoration: "none", color: "black" }}>
               <li> Как все работает </li>
-            </Link>
+            </Link> */}
             <div>
               <InstagramIcon className="icon" sx={{ color: "#6F73EE" }} />
               <FacebookIcon className="icon" sx={{ color: "#6F73EE" }} />
@@ -65,7 +64,7 @@ const Navbar = () => {
             </div>
           </ul>
 
-          <div className="number">+996997555114 +</div>
+          <div className="number">+996 700 83 98 53</div>
         </div>
         <div className="nav2">
           <Menu />
@@ -97,7 +96,7 @@ const Navbar = () => {
           <div className="input_box">
             <input
               className="input_search"
-              value={stateSearch}
+              // value={stateSearch}
               onChange={(e) => setSearch(e.target.value)}
             ></input>
             <img src={Search} alt="" className="search_icon" />
@@ -107,14 +106,13 @@ const Navbar = () => {
             sx={{ m: 5, display: "flex", justifyContent: "space-between" }}
             className="icons"
           >
-            <FavoriteBorderIcon sx={{ color: "grey" }} />
+            {/* <FavoriteBorderIcon sx={{ color: "grey" }} /> */}
             <img
               src={cart}
               alt=""
               sx={{ mb: "4px", width: "22px" }}
               className="cart"
               onClick={() => navigate("/cart")}
-
             />
           </div>
         </div>
@@ -123,13 +121,13 @@ const Navbar = () => {
         className="filter"
         onChange={(e) => fetchByParams("type", e.target.value)}
       >
-        <div>
+        <div onClick={() => navigate(`/`)}>
           <HomeIcon
             sx={{ color: "#6F73EE", width: "25%", height: "inherit" }}
             className="filter_icon"
           />
         </div>
-        <div>
+        {/* <div>
           <LaptopIcon
             sx={{ color: "#6F73EE", width: "25%", height: "inherit" }}
             className="filter_icon"
@@ -158,7 +156,7 @@ const Navbar = () => {
             sx={{ color: "#6F73EE", width: "25%", height: "inherit" }}
             className="filter_icon"
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
